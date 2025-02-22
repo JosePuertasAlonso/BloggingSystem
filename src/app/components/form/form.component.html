@@ -1,0 +1,37 @@
+<div class="form">
+  <h2>Formulario de Producto</h2>
+  <div>
+    <label for="title">Titulo</label>
+    <input
+      type="text"
+      id="title"
+      placeholder="Introduce el titulo"
+      [(ngModel)]="dataForm.title"
+    />
+  </div>
+  <div>
+    <label for="image">Imagen</label>
+    <input
+      type="text"
+      id="image"
+      placeholder="Introduce la url de la imagen"
+      [(ngModel)]="dataForm.image"
+    />
+  </div>
+  <div>
+    <label for="body">Cuerpo de la noticia </label>
+    <textarea
+      type=""
+      id="body"
+      placeholder="Introduce el cuerpo"
+      [(ngModel)]="dataForm.body"
+    >
+    </textarea>
+  </div>
+  <div>
+    <label for="quantity">Fecha de Publicación</label>
+    <input type="date" id="quantity" [(ngModel)]="dataForm.date" />
+  </div>
+
+  <button (click)="getData()">Guardar</button>
+</div>

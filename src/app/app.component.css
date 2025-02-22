@@ -1,0 +1,91 @@
+main {
+  display: flex;
+  background-color: #edf8f8;
+  height: 100vh;
+}
+
+main .content {
+  width: 100%;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+main aside {
+  width: 80%;
+  color: #33443e;
+}
+
+.menu {
+  width: 250px;
+  height: 100vh;
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(-100%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100%;
+  background: #b6e1d4;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow: hidden;
+}
+
+.menu-open {
+  transform: translateX(0);
+}
+
+.menu-toggle {
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background: #33443e;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  z-index: 1100;
+  border-radius: 5px;
+}
+
+.menu-toggle:hover {
+  background: #4e685d;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 900;
+  display: none;
+}
+
+.menu-open ~ .overlay {
+  display: block;
+}
+
+@media (min-width: 1023px) {
+  .menu {
+    position: relative;
+    transform: translateX(0);
+    height: 100vh;
+  }
+
+  .menu-toggle {
+    display: none;
+  }
+
+  .overlay {
+    display: none !important;
+  }
+  main aside {
+    width: 700px;
+  }
+}

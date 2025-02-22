@@ -1,0 +1,21 @@
+<div class="news-container">
+  @if (selectedNew != null) {
+  <article class="news-article">
+    <h2>{{ selectedNew.title }}</h2>
+    <img
+      [src]="selectedNew.image"
+      alt="Imagen de la noticia"
+      class="news-image"
+    />
+    <small class="news-date">📅 {{ formattedDate }}</small>
+
+    <p class="news-body">{{ selectedNew.body }}</p>
+  </article>
+  } @else {
+  <div class="no-news">
+    <h2>📰 ¡Bienvenido al Blog de Noticias!</h2>
+    <p>Selecciona una noticia de la lista para verla en detalle.</p>
+    <p>📢 ¡Mantente informado con las últimas novedades!</p>
+  </div>
+  }
+</div>

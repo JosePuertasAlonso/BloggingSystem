@@ -1,0 +1,19 @@
+<h2>Lista de Noticias</h2>
+
+<div class="newList">
+  @for(new of newsList; track new; let i = $index){
+  <div
+    class="newItem"
+    [class.active]="i === activeIndex"
+    (click)="setActiveIndex(i)"
+  >
+    <img src="{{ new.image }}" alt="" />
+    <div>
+      <h4>{{ new.title }}</h4>
+      <p>
+        {{ new.body }}
+      </p>
+    </div>
+  </div>
+  }
+</div>
