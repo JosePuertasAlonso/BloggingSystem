@@ -37,3 +37,15 @@
     background-color: #4e685d;
   }
 }
+
+.form input.ng-invalid.ng-touched {
+  border-bottom: 3px solid crimson;
+}
+
+.form textarea.ng-invalid.ng-touched {
+  border-bottom: 3px solid crimson;
+}
+
+.form .error {
+  color: darkred;
+}

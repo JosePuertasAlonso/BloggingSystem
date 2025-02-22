@@ -1,37 +1,57 @@
 <div class="form">
   <h2>Formulario de Producto</h2>
-  <div>
-    <label for="title">Titulo</label>
-    <input
-      type="text"
-      id="title"
-      placeholder="Introduce el titulo"
-      [(ngModel)]="dataForm.title"
-    />
-  </div>
-  <div>
-    <label for="image">Imagen</label>
-    <input
-      type="text"
-      id="image"
-      placeholder="Introduce la url de la imagen"
-      [(ngModel)]="dataForm.image"
-    />
-  </div>
-  <div>
-    <label for="body">Cuerpo de la noticia </label>
-    <textarea
-      type=""
-      id="body"
-      placeholder="Introduce el cuerpo"
-      [(ngModel)]="dataForm.body"
-    >
-    </textarea>
-  </div>
-  <div>
-    <label for="quantity">Fecha de Publicación</label>
-    <input type="date" id="quantity" [(ngModel)]="dataForm.date" />
-  </div>
+  <form [formGroup]="newForm" (ngSubmit)="getData()">
+    <div>
+      <label for="title">Título</label>
+      <input
+        type="text"
+        id="title"
+        placeholder="Introduce el título"
+        formControlName="title"
+      />
+      @if(checkControl('title','required')){
+      <small class="error"> El título es obligatorio. </small>
+      }
+    </div>
 
-  <button (click)="getData()">Guardar</button>
+    <div>
+      <label for="image">Imagen</label>
+      <input
+        type="text"
+        id="image"
+        placeholder="Introduce la url de la imagen"
+        formControlName="image"
+      />
+      @if(checkControl('image','required')){
+      <small class="error"> La imagen es obligatoria. </small>
+      }
+    </div>
+
+    <div>
+      <label for="body">Cuerpo de la noticia</label>
+      <textarea
+        id="body"
+        placeholder="Introduce el cuerpo"
+        formControlName="body"
+      ></textarea>
+      @if(checkControl('body','required')){
+      <small class="error"> El cuerpo es obligatorio. </small>
+      }
+    </div>
+
+    <div>
+      <label for="date">Fecha de Publicación</label>
+      <input type="date" id="date" formControlName="date" />
+
+      @if(checkControl('date','required')){
+      <small class="error"> La fecha es obligatoria. </small>
+      } @if(checkControl('date','dateLessThanTodayValidator')){
+      <small class="error">
+        {{newForm.get('date')?.errors?.['dateLessThanTodayValidator']}}
+      </small>
+      }
+    </div>
+
+    <button type="submit" [disabled]="newForm.invalid">Guardar</button>
+  </form>
 </div>
